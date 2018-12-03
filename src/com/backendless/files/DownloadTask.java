@@ -1,7 +1,6 @@
 package com.backendless.files;
 
 import android.os.AsyncTask;
-import android.os.PowerManager;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -54,11 +53,11 @@ public class DownloadTask extends AsyncTask<Void, Integer, String>
       if( connection.getResponseCode() != HttpURLConnection.HTTP_OK )
         return "Server returned HTTP " + connection.getResponseCode() + " " + connection.getResponseMessage();
 
-      // this will be useful to display download percentage
+      // this will be useful to display downloading percentage
       // might be -1: server did not report the length
       int fileLength = connection.getContentLength();
 
-      // download the file
+      // downloading the file
       input = connection.getInputStream();
       output = new FileOutputStream( saveLocation );
 

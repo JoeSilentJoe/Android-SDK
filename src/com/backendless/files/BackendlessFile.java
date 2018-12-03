@@ -55,24 +55,24 @@ public class BackendlessFile
     Backendless.Files.remove( fileURL, responder );
   }
 
-  public Future<File> download( String destinationPath )
+  public Future<File> download( String destinationPath, ProgressCallback progressCallback )
   {
-    return new FileDownload().download( fileURL, destinationPath );
+    return new FileDownload().download( getFileURL(), destinationPath, progressCallback );
   }
 
-  public Future<File> download( String destinationPath, String fileName )
+  public Future<File> download( String destinationPath, String fileName, ProgressCallback progressCallback )
   {
-    return new FileDownload().download( fileURL, destinationPath, fileName );
+    return new FileDownload().download( getFileURL(), destinationPath, fileName, progressCallback );
   }
 
-  public Future<Void> download( OutputStream stream )
+  public Future<Void> download( OutputStream stream, ProgressCallback progressCallback )
   {
-    return new FileDownload().download( fileURL, stream );
+    return new FileDownload().download( getFileURL(), stream, progressCallback );
   }
 
-  public Future<byte[]> download()
+  public Future<byte[]> download( ProgressCallback progressCallback )
   {
-    return new FileDownload().download( fileURL );
+    return new FileDownload().download( getFileURL(), progressCallback );
   }
 
 }
